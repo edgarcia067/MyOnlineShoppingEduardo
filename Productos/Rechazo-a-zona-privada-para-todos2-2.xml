@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" id="657edbd9-6727-456c-87ed-6aa38de2fa4f" keepSession="false" name="Rechazo a zona privada para todos2 2" searchProperties="true" timeout="0">
-  <con:settings id="b3fe96d9-01cf-4bb3-8625-cce48a661db7">
+  <con:settings id="d1cfc37b-a649-401e-9523-17a3914c9662">
     <con:setting id="657edbd9-6727-456c-87ed-6aa38de2fa4ffileName">Rechazo-a-zona-privada-para-todos2-2</con:setting>
   </con:settings>
   <con:testStep id="54381435-c662-40ca-bc1f-e95af50bebfc" name="getAll" type="restrequest">
