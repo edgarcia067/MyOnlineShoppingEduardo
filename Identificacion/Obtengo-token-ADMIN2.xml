@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" id="d2e22ad6-dbc2-4b9b-9b7c-bfa5fe64f687" keepSession="false" name="Obtengo token ADMIN2" searchProperties="true" timeout="0">
-  <con:settings id="c62b66a1-19c4-4e98-9612-80c340eb1734">
+  <con:settings id="3019a0e0-aef7-47ae-b1e2-19a0ddbde4fd">
     <con:setting id="d2e22ad6-dbc2-4b9b-9b7c-bfa5fe64f687fileName">Obtengo-token-ADMIN2</con:setting>
   </con:settings>
   <con:testStep id="a4ebad58-9b9d-427e-89fb-e7330e2753a6" name="login ADMIN" type="restrequest">

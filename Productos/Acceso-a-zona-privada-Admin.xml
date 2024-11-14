@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" id="15b36d5c-71c8-4061-9f56-0a8a15d31068" keepSession="false" name="Acceso a zona privada Admin" searchProperties="true" timeout="0">
-  <con:settings id="267099aa-ff95-459f-8b3d-9d94eb007e54">
+  <con:settings id="ee447408-bb0e-40dd-a614-87ef5eff66c9">
     <con:setting id="15b36d5c-71c8-4061-9f56-0a8a15d31068fileName">Acceso-a-zona-privada-Admin</con:setting>
   </con:settings>
   <con:testStep id="af465956-2bc5-4233-91f2-2c0230adea6c" name="ejecutar Login ADMIN" type="calltestcase">

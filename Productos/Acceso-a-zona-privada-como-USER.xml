@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" id="746c50fd-28de-4c0c-953d-49b8ce6ccea1" keepSession="false" name="Acceso a zona privada como USER" searchProperties="true" timeout="0">
-  <con:settings id="87ccfad2-d20f-47d4-968b-7a4a54091b1c">
+  <con:settings id="365d6664-440a-4a22-8c3d-c8593dd7647d">
     <con:setting id="746c50fd-28de-4c0c-953d-49b8ce6ccea1fileName">Acceso-a-zona-privada-como-USER</con:setting>
   </con:settings>
   <con:testStep id="8c74d292-1f10-4ca1-8a0d-3a506029d4e2" name="ejecutar Login USER" type="calltestcase">
