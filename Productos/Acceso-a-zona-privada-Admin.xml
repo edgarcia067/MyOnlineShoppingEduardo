@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase xmlns:con="http://eviware.com/soapui/config" id="15b36d5c-71c8-4061-9f56-0a8a15d31068" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="Acceso a zona privada Admin" searchProperties="true" timeout="0">
+  <con:settings id="52d53486-0fca-489f-9b38-e2b10bcd471e">
+    <con:setting id="15b36d5c-71c8-4061-9f56-0a8a15d31068fileName">Acceso-a-zona-privada-Admin</con:setting>
+  </con:settings>
+  <con:testStep type="calltestcase" name="ejecutar Login ADMIN" id="af465956-2bc5-4233-91f2-2c0230adea6c">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:RunTestCaseStep">
+      <con:targetTestCase>e0fbd290-a739-4562-a8ef-da5b0e2428d8</con:targetTestCase>
+      <con:properties>
+        <con:property>
+          <con:name>token_user</con:name>
+          <con:value>eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyLGFkbWluQGVtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlzcyI6ImNvbS5taWNyb2NvbXBhbnkiLCJpYXQiOjE3MzE0MTMzODMsImV4cCI6MTczMTQ5OTc4M30.W6JweIjUo3h8mJlZCWdgSavwaD8L-JXg1z9FaPCpUslAibUMWyMYX_GpfWwpNIFM_ZDAdaJmkAgpLufd0ZPLdg</con:value>
+        </con:property>
+      </con:properties>
+      <con:returnProperties>
+        <con:entry>token_user</con:entry>
+      </con:returnProperties>
+      <con:runMode>PARALLELL</con:runMode>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasource" name="DS" id="8ebbd566-6411-419f-b21c-e61621d774d8">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:DataSourceStep">
+      <con:dataSource type="Groovy">
+        <con:configuration>
+          <script>import groovy.sql.Sql
+
+// Preconditions: properties "name" and "serial" exist
+log.info("Reading from db ... ")
+
+// Get current row (iteration of n asked to load)
+def it = testRunner.testCase.testSteps["DS"].currentRow;
+log.info("iter: ${it}")
+
+// DB params
+def sql = Sql.newInstance('jdbc:mysql://localhost:3306/productsdb', 'products_user', 'rapi123', 'com.mysql.jdbc.Driver')
+
+sql.eachRow("SELECT * FROM products Limit 1 OFFSET ${it} "){ row ->
+	log.info("row: ${row.name} ${row.serial}")
+	result['name'] = row.name
+	result['serial'] = row.serial
+}
+
+sql.close()</script>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>name</con:property>
+      <con:property>serial</con:property>
+      <con:startRow>1</con:startRow>
+      <con:endRow>10</con:endRow>
+      <con:recordsPerIteration>1</con:recordsPerIteration>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:trimValues>false</con:trimValues>
+      <con:entitizeValues>false</con:entitizeValues>
+      <con:restartOnRun>true</con:restartOnRun>
+      <con:expandProperties>false</con:expandProperties>
+      <con:stopDatasourceExhausted>false</con:stopDatasourceExhausted>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="CreateProduct" id="ecf429e2-69cb-4a03-9b1c-e44fb2fd7628">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="Products Management API" methodName="create" resourcePath="/products" xsi:type="con:RestRequestStep">
+      <con:restRequest name="CreateProduct" id="2fd94790-b11e-4121-8d05-970ffbf8c20b" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${ejecutar Login ADMIN#token_user}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9090</con:endpoint>
+        <con:request>{
+   "name" : "${DS#name}",
+  "serial" : "${DS#serial}"
+}</con:request>
+        <con:originalUri>http://localhost/products</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="c536a4cc-2142-4689-8d19-da53cc9b9c74" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>201</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Response SLA Assertion" id="00f102db-cc08-4e00-a41f-fd440ab0cdf7" name="Response SLA">
+          <con:configuration>
+            <SLA>200</SLA>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="fde7a49d-19d0-409e-8578-40acad3b3621">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="getone" id="ed90aea7-f80c-4558-9369-0cddf1a9530d">
+    <con:settings/>
+    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="Products Management API" methodName="getOne_1" resourcePath="/products/{pid}" xsi:type="con:RestRequestStep">
+      <con:restRequest name="getone" id="e6eea807-a657-4524-934d-e49b22d3b8dc" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;con:entry key="Authorization" value="Bearer ${ejecutar Login ADMIN#token_user}" xmlns:con="http://eviware.com/soapui/config"/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:9090</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/products/1</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="3078d44e-a2fb-426f-9bf1-54b8169a10f5" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Response SLA Assertion" id="95b03e2f-cd26-4ece-8521-a74abe611c95" name="Response SLA">
+          <con:configuration>
+            <SLA>200</SLA>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath RegEx Match" id="ee9ed110-3f1b-4f04-9c37-01b12b37a183" name="JSONPath RegEx Match">
+          <con:configuration>
+            <path>$['id']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+            <regEx>[0-9]{1,}</regEx>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters>
+          <con:entry key="pid" value="${CreateProduct#Response#$['id']}"/>
+        </con:parameters>
+        <con:environmentSpec>
+          <con:entry environmentId="fde7a49d-19d0-409e-8578-40acad3b3621">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="Data Source Loop" id="b62b13ed-fc46-4c09-95f6-1702a566e291">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>DS</dataSourceStep>
+      <targetStep>CreateProduct</targetStep>
+      <discardResults>true</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="fde7a49d-19d0-409e-8578-40acad3b3621">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>
