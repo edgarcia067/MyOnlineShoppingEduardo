@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:testCase xmlns:con="http://eviware.com/soapui/config" id="657edbd9-6727-456c-87ed-6aa38de2fa4f" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="Rechazo a zona privada para todos2 2" searchProperties="true" timeout="0">
-  <con:settings id="c12359fa-2b96-4c03-b447-720d75a22b4e">
+<con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" id="657edbd9-6727-456c-87ed-6aa38de2fa4f" keepSession="false" name="Rechazo a zona privada para todos2 2" searchProperties="true" timeout="0">
+  <con:settings id="9e3cf0de-ee22-47df-9609-ab275cbd9f0f">
     <con:setting id="657edbd9-6727-456c-87ed-6aa38de2fa4ffileName">Rechazo-a-zona-privada-para-todos2-2</con:setting>
   </con:settings>
-  <con:testStep type="restrequest" name="getAll" id="54381435-c662-40ca-bc1f-e95af50bebfc">
+  <con:testStep id="54381435-c662-40ca-bc1f-e95af50bebfc" name="getAll" type="restrequest">
     <con:settings/>
-    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="Products Management API" methodName="getAll" resourcePath="/products" xsi:type="con:RestRequestStep">
-      <con:restRequest name="getAll" id="a559b873-e230-4b47-8880-f187819cf26b" mediaType="application/json">
+    <con:config xsi:type="con:RestRequestStep" methodName="getAll" resourcePath="/products" service="Products Management API">
+      <con:restRequest id="a559b873-e230-4b47-8880-f187819cf26b" mediaType="application/json" name="getAll">
         <con:settings>
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
@@ -14,25 +14,25 @@
         <con:endpoint>http://localhost:9090</con:endpoint>
         <con:request/>
         <con:originalUri>http://localhost/products</con:originalUri>
-        <con:assertion type="Valid HTTP Status Codes" id="7c5bb62f-9105-4e92-a51e-d58bee0f7f1a" name="Valid HTTP Status Codes">
+        <con:assertion id="7c5bb62f-9105-4e92-a51e-d58bee0f7f1a" name="Valid HTTP Status Codes" type="Valid HTTP Status Codes">
           <con:settings/>
           <con:configuration>
             <codes>401</codes>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="Response SLA Assertion" id="e088f498-fe88-42e8-8a6a-9b59d1fa548b" name="Response SLA">
+        <con:assertion id="e088f498-fe88-42e8-8a6a-9b59d1fa548b" name="Response SLA" type="Response SLA Assertion">
           <con:configuration>
             <SLA>200</SLA>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="Simple NotContains" id="6a42e407-57b4-4c53-b063-6b2af5235933" name="Not Contains">
+        <con:assertion id="6a42e407-57b4-4c53-b063-6b2af5235933" name="Not Contains" type="Simple NotContains">
           <con:configuration>
             <token/>
             <ignoreCase>false</ignoreCase>
             <useRegEx>false</useRegEx>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="GroovyScriptAssertion" id="90147328-8a1d-4c29-aace-2cd3fdce884a" name="Script Assertion">
+        <con:assertion id="90147328-8a1d-4c29-aace-2cd3fdce884a" name="Script Assertion" type="GroovyScriptAssertion">
           <con:configuration>
             <scriptText>import Callee
 import ProductUtils
@@ -70,28 +70,28 @@ ProductUtils.validar(messageExchange)
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="restrequest" name="getAll con filtros" id="7381bbca-949e-4ac2-af18-e1c358afd137">
+  <con:testStep id="7381bbca-949e-4ac2-af18-e1c358afd137" name="getAll con filtros" type="restrequest">
     <con:settings/>
-    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="Products Management API" resourcePath="/products" methodName="getAll Filtros" xsi:type="con:RestRequestStep">
-      <con:restRequest name="getAll con filtros" id="a6664659-abaf-4285-bb53-bd3ff3dd374f" mediaType="application/json">
+    <con:config xsi:type="con:RestRequestStep" methodName="getAll Filtros" resourcePath="/products" service="Products Management API">
+      <con:restRequest id="a6664659-abaf-4285-bb53-bd3ff3dd374f" mediaType="application/json" name="getAll con filtros">
         <con:settings>
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
         <con:endpoint>http://localhost:9090</con:endpoint>
         <con:request/>
         <con:originalUri>http://localhost/products</con:originalUri>
-        <con:assertion type="Valid HTTP Status Codes" id="3662ac93-9b02-4348-9fe3-1ef223ca69d2" name="Valid HTTP Status Codes">
+        <con:assertion id="3662ac93-9b02-4348-9fe3-1ef223ca69d2" name="Valid HTTP Status Codes" type="Valid HTTP Status Codes">
           <con:settings/>
           <con:configuration>
             <codes>401</codes>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="Response SLA Assertion" id="deaf717f-504c-48e0-8e68-77f1f3cb3ae8" name="Response SLA">
+        <con:assertion id="deaf717f-504c-48e0-8e68-77f1f3cb3ae8" name="Response SLA" type="Response SLA Assertion">
           <con:configuration>
             <SLA>200</SLA>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="GroovyScriptAssertion" id="e8a84d84-4df0-49c3-9fa7-064c03c6ba70" name="Script Assertion">
+        <con:assertion id="e8a84d84-4df0-49c3-9fa7-064c03c6ba70" name="Script Assertion" type="GroovyScriptAssertion">
           <con:configuration>
             <scriptText>import Callee
 import ProductUtils

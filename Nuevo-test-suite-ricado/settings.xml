@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite xmlns:con="http://eviware.com/soapui/config" id="e5550259-5e0a-4245-be58-60d69e1ad8bc" name="Nuevo test suite ricado">
+  <con:settings id="5a16789e-2146-4a29-8eba-9e6162a3568d">
+    <con:setting id="e5550259-5e0a-4245-be58-60d69e1ad8bcfileName">Nuevo-test-suite-ricado</con:setting>
+  </con:settings>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>

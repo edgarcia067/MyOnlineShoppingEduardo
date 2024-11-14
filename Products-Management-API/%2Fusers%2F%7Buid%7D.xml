@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config" name="/users/{uid}" path="/users/{uid}" id="e27fcfd6-e49c-437f-b14b-5e163bcabb2f">
-  <con:settings id="703316b1-9432-48c6-8ca3-d61c04436bde">
+<con:resource xmlns:con="http://eviware.com/soapui/config" id="e27fcfd6-e49c-437f-b14b-5e163bcabb2f" name="/users/{uid}" path="/users/{uid}">
+  <con:settings id="1175bd8a-f25c-460f-b2ed-b3f54ca7779c">
     <con:setting id="e27fcfd6-e49c-437f-b14b-5e163bcabb2ffileName">%2Fusers%2F%7Buid%7D</con:setting>
   </con:settings>
   <con:parameters/>
-  <con:method name="getOne" id="06f719c5-a1fb-4c33-8ad5-4c02914fdee7" method="GET">
+  <con:method id="06f719c5-a1fb-4c33-8ad5-4c02914fdee7" method="GET" name="getOne">
     <con:settings/>
     <con:parameters>
       <con:parameter required="true">
@@ -24,7 +24,7 @@
       <con:params/>
       <con:description>OK</con:description>
     </con:representation>
-    <con:request name="Request 1" id="4e06cd16-9b69-434d-8c34-b83497d5b90a" mediaType="application/json">
+    <con:request id="4e06cd16-9b69-434d-8c34-b83497d5b90a" mediaType="application/json" name="Request 1">
       <con:settings/>
       <con:endpoint>http://localhost:9090</con:endpoint>
       <con:credentials>
@@ -44,7 +44,7 @@
       </con:entry>
     </con:environmentSpec>
   </con:method>
-  <con:method name="deleteUser" id="f75b02e4-c602-4b3a-b024-8e56f8d6422c" method="DELETE">
+  <con:method id="f75b02e4-c602-4b3a-b024-8e56f8d6422c" method="DELETE" name="deleteUser">
     <con:settings/>
     <con:parameters>
       <con:parameter required="true">
@@ -64,7 +64,7 @@
       <con:params/>
       <con:description>OK</con:description>
     </con:representation>
-    <con:request name="Request 1" id="eb682d99-8a3b-4f3a-a210-46eec31cfa94" mediaType="application/json">
+    <con:request id="eb682d99-8a3b-4f3a-a210-46eec31cfa94" mediaType="application/json" name="Request 1">
       <con:settings/>
       <con:endpoint>http://localhost:9090</con:endpoint>
       <con:credentials>
@@ -84,7 +84,7 @@
       </con:entry>
     </con:environmentSpec>
   </con:method>
-  <con:method name="updateUser" id="b2483292-23ab-4bd5-918f-f3ac818ed809" method="PUT">
+  <con:method id="b2483292-23ab-4bd5-918f-f3ac818ed809" method="PUT" name="updateUser">
     <con:settings/>
     <con:parameters>
       <con:parameter required="true">
@@ -108,7 +108,7 @@
       <con:params/>
       <con:description>OK</con:description>
     </con:representation>
-    <con:request name="Request 1" id="c04187a6-fce5-41ca-9e1e-ce414aa85e83" mediaType="application/json">
+    <con:request id="c04187a6-fce5-41ca-9e1e-ce414aa85e83" mediaType="application/json" name="Request 1">
       <con:settings/>
       <con:endpoint>http://localhost:9090</con:endpoint>
       <con:credentials>

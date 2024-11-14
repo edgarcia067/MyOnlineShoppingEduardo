@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:testCase xmlns:con="http://eviware.com/soapui/config" id="d2e22ad6-dbc2-4b9b-9b7c-bfa5fe64f687" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="false" name="Obtengo token ADMIN2" searchProperties="true" timeout="0">
-  <con:settings id="f5d50f05-7f4f-4c97-a583-8bd6fc0fba9d">
+<con:testCase xmlns:con="http://eviware.com/soapui/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" id="d2e22ad6-dbc2-4b9b-9b7c-bfa5fe64f687" keepSession="false" name="Obtengo token ADMIN2" searchProperties="true" timeout="0">
+  <con:settings id="c62b66a1-19c4-4e98-9612-80c340eb1734">
     <con:setting id="d2e22ad6-dbc2-4b9b-9b7c-bfa5fe64f687fileName">Obtengo-token-ADMIN2</con:setting>
   </con:settings>
-  <con:testStep type="restrequest" name="login ADMIN" id="a4ebad58-9b9d-427e-89fb-e7330e2753a6">
+  <con:testStep id="a4ebad58-9b9d-427e-89fb-e7330e2753a6" name="login ADMIN" type="restrequest">
     <con:settings/>
-    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" service="Products Management API" resourcePath="/auth/login" methodName="login" xsi:type="con:RestRequestStep">
-      <con:restRequest name="login ADMIN" id="f63b9cfe-3d0a-4383-a2b2-4d675f1bd254" mediaType="application/json" postQueryString="false">
+    <con:config xsi:type="con:RestRequestStep" methodName="login" resourcePath="/auth/login" service="Products Management API">
+      <con:restRequest id="f63b9cfe-3d0a-4383-a2b2-4d675f1bd254" mediaType="application/json" name="login ADMIN" postQueryString="false">
         <con:settings>
           <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
         </con:settings>
@@ -16,18 +16,18 @@
   "password" : "apass"\r
 }</con:request>
         <con:originalUri>http://localhost/auth/login</con:originalUri>
-        <con:assertion type="Valid HTTP Status Codes" id="27b37cd5-b236-4af2-a276-ffe90c56a947" name="Valid HTTP Status Codes">
+        <con:assertion id="27b37cd5-b236-4af2-a276-ffe90c56a947" name="Valid HTTP Status Codes" type="Valid HTTP Status Codes">
           <con:settings/>
           <con:configuration>
             <codes>200</codes>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="Response SLA Assertion" id="56311612-58bd-4d63-bdfd-9ccb024aedd5" name="Response SLA">
+        <con:assertion id="56311612-58bd-4d63-bdfd-9ccb024aedd5" name="Response SLA" type="Response SLA Assertion">
           <con:configuration>
             <SLA>200</SLA>
           </con:configuration>
         </con:assertion>
-        <con:assertion type="JsonPath RegEx Match" id="85e874b2-cf35-4119-801c-3c3da3c3e14b" name="JSONPath RegEx Match">
+        <con:assertion id="85e874b2-cf35-4119-801c-3c3da3c3e14b" name="JSONPath RegEx Match" type="JsonPath RegEx Match">
           <con:configuration>
             <path>$['accessToken']</path>
             <content>true</content>
@@ -51,10 +51,10 @@
       </con:restRequest>
     </con:config>
   </con:testStep>
-  <con:testStep type="transfer" name="actualizar Prop Token" id="6c7089ca-b156-4e30-be8b-70738e06bfb7">
+  <con:testStep id="6c7089ca-b156-4e30-be8b-70738e06bfb7" name="actualizar Prop Token" type="transfer">
     <con:settings/>
-    <con:config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="con:PropertyTransfersStep">
-      <con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false">
+    <con:config xsi:type="con:PropertyTransfersStep">
+      <con:transfers entitize="false" failOnError="true" ignoreEmpty="false" setNullOnMissingSource="true" transferChildNodes="false" transferTextContent="true" transferToAll="false">
         <con:name>token</con:name>
         <con:sourceType>Response</con:sourceType>
         <con:sourceStep>login ADMIN</con:sourceStep>
